@@ -1,0 +1,17 @@
+:root {
+  
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  position: relative;
+  background-color: #ffffff;
+  height: 100%;
+
+  font-family: 'Source Sans Pro';
+  font-weight: normal;
+  font-size:1.5rem;
+  color:#616161;
+  box-sizing: border-box;
+}

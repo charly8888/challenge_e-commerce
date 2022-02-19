@@ -1,0 +1,22 @@
+
+.separator{
+    margin-bottom: 4rem;
+}
+img{
+object-fit: cover;
+object-position: bottom right;
+}
+.section-title{
+    position: absolute;
+    left : 8.25rem ;
+    top :20.5rem;
+    font-weight:bold;
+    font-size:4rem;
+    color:#ffffff;
+    margin: 0;
+}
+.se{
+    width: 100px;
+    background-color: #333;
+    height: 2rem;
+}
