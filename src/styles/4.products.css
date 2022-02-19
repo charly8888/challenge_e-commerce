@@ -1,0 +1,117 @@
+.container_products{
+    width: 73.5rem;
+    min-height:12vh;
+    margin: 0 auto;
+    display:  grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr;
+     gap: 1.5rem;
+}
+
+.card{
+    width: 17.25rem;
+    height:  17.25rem;
+    background:#fff;
+    box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
+    position: relative;
+    transition:all .2s ease-in-out;
+    overflow: hidden;
+}
+.card:hover{
+    transform: translateY(-0.75rem);
+    box-shadow: 10px 10px 31px -8px rgba(0,0,0,0.61);
+}
+.container_item{
+    position: relative;
+    height:11.38rem;
+    width: 15.75rem;
+    margin: 0.8rem auto 0;
+}
+
+.bag{
+    width:42px;
+    height:42px;
+    border-radius: 50%;
+    border: none;
+    background-image:url(../../assets/icons/buy-blue.svg);
+    cursor: pointer;
+    position: absolute;
+    right:0;
+    top: 0;
+}
+.white{
+    background-image:url(../../assets/icons/buy-white.svg);
+    background-repeat: no-repeat;
+    background-position: -2px -2px;
+    width:42px;
+    height:42px;
+    right:0.75rem;
+    top: 0.83rem;
+}
+.separator_card{
+    width: 14.25rem;
+    height: 1px;
+    background:#d9d9d9;
+    margin: 0 auto;
+}
+.category{
+    font-size:16px;
+    color:#a3a3a3;
+    letter-spacing:-0.04px;
+    margin: 1.25rem 0 0 1.5rem;
+    text-align:left;
+}
+.title{
+    font-size:18px;
+    color:#616161;
+    letter-spacing:-0.04px;
+    text-align:left;
+    margin: 0;
+    margin-left: 1.5rem;
+}
+
+.hover{
+    position:relative;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(9,9,121,0) 50%, rgba(10,212,250,0.6) 50%, rgba(37,187,241,0.6) 100%);
+    bottom: 16.2rem;
+
+}
+.hover:hover{
+    transform: translateX(-50%)
+}
+
+.redeem_now{
+    position: absolute;
+    border: none;
+    background:#ffffff;
+    width:14.25rem;
+    color:#616161;
+    height:2.63rem;
+    right: 1.5rem;
+    bottom: 4.14rem;
+    font-size:18px;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+.container_of_conteiner{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    right:0;
+    top: 7rem;
+}
+.container_price{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+
+}
+.price{
+    font-size:2.25rem;
+    color:#ffffff;
+    margin: 0;
+}
+.coin_product{
+    margin: 3px 0 0 5px;
+}

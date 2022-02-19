@@ -1,8 +1,8 @@
 
 .separator{
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
 }
-img{
+.img_section{
 object-fit: cover;
 object-position: bottom right;
 }
@@ -14,9 +14,4 @@ object-position: bottom right;
     font-size:4rem;
     color:#ffffff;
     margin: 0;
-}
-.se{
-    width: 100px;
-    background-color: #333;
-    height: 2rem;
 }
