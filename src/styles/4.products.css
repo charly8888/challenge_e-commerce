@@ -44,8 +44,9 @@
     background-position: -2px -2px;
     width:42px;
     height:42px;
-    right:0.75rem;
-    top: 0.83rem;
+    right:12px;
+    top: 14px;
+    transform:scale(1.05)
 }
 .separator_card{
     width: 14.25rem;
@@ -72,9 +73,9 @@
 .hover{
     position:relative;
     width: 200%;
-    height: 100%;
+    height: 101%;
     background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(9,9,121,0) 50%, rgba(10,212,250,0.6) 50%, rgba(37,187,241,0.6) 100%);
-    bottom: 16.2rem;
+    bottom: 261px;
 
 }
 .hover:hover{

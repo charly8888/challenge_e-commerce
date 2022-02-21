@@ -50,3 +50,13 @@ cursor: pointer;
     position: absolute;
     right:0;
 }
+.before{
+    width:3rem;
+    height:3rem;
+    border-radius: 50%;
+    border: none;
+    background-image:url(../../assets/icons/arrow-left.svg);
+    cursor: pointer;
+    position: absolute;
+    right:4rem;
+}
