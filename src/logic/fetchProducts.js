@@ -1,4 +1,4 @@
-import { options } from './fetchUsers'
+import { optionsGet } from './fetchUsers'
 
 const request = async (url, options) => {
   const response = await fetch(url, options)
@@ -24,4 +24,4 @@ const request = async (url, options) => {
   return productsSortBy16
 }
   
-export const resultGetProducts = await request('https://coding-challenge-api.aerolab.co/products', options)
+export const resultGetProducts = await request('https://coding-challenge-api.aerolab.co/products', optionsGet)
