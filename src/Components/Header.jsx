@@ -4,6 +4,7 @@ import { resultGetUsers } from '../helpers/apis/gets'
 import '../../styles/1.header.css'
 
 export const Header = () => {
+  const [options, setOptions] = useState(false)
   const [name, setName] = useState('')
   const [totalPoints, setTotalPoints] = useState(0)
 
@@ -15,10 +16,8 @@ export const Header = () => {
     setName(name)
   }, [])
 
-  const handlerAddPoints = async () => {
-    let response = await requestPoints({
-      amount: 5000,
-    })
+  const handlerAddPoints = async (amount) => {
+    let response = await requestPoints({ amount })
     const data = await response.json()
     const newPoints = data['New Points']
     setTotalPoints(newPoints)
@@ -45,7 +44,17 @@ export const Header = () => {
             className="coin"
           ></img>
         </div>
-        <button className="add_points" onClick={handlerAddPoints}></button>
+        <button
+          className="add_points"
+          onClick={() => setOptions(!options)}
+        ></button>
+        {options && (
+          <div className="container_buttons">
+            <button onClick={() => handlerAddPoints(1000)}>1000</button>
+            <button onClick={() => handlerAddPoints(5000)}>5000</button>
+            <button onClick={() => handlerAddPoints(7500)}>7500</button>
+          </div>
+        )}
       </div>
     </header>
   )
