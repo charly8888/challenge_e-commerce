@@ -41,7 +41,7 @@ header{
     border-radius: 50%;
     background-color: none;
     border: none;
-    background-image:url(../../assets/icons/mas.png);
+    background-image:url(/icons/mas.png);
     background-size: 100%;
     cursor: pointer;
     margin-left: 1.1rem;

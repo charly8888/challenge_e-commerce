@@ -1,17 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Header } from './Components/Header'
-import { PictureSection } from './Components/PictureSection'
-import { Selectors } from './Components/Selectors'
+import App from './App'
+
 import './index.css'
 
-
 ReactDOM.render(
-  <>
-    <Header />
-    <PictureSection />
-    <Selectors  />
-    
-  </>,
+  <React.StrictMode>
+    <App/>
+  </React.StrictMode>,
   document.getElementById('root')
 )

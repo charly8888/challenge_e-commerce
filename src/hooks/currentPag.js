@@ -1,18 +1,20 @@
+import { useState } from 'react'
+import { resultGetProducts } from '../../helpers/apis/gets'
 
-import  { useState} from 'react'
-import { resultGetProducts } from '../logic/fetchProducts'
-export const useCurrentPag = ()=> {
+export const useCurrentPag = async () => {
+  let productos = await resultGetProducts(
+    'https://coding-challenge-api.aerolab.co/products'
+  )
   const [pag, setpag] = useState(0)
   const increment = () => {
-    if(pag < resultGetProducts.length - 1) {
-      setpag(p => p + 1)
+    if (pag < productos.length - 1) {
+      setpag((p) => p + 1)
     }
   }
   const decrement = () => {
-    if(pag > 0) {
-      setpag(p => p - 1)
+    if (pag > 0) {
+      setpag((p) => p - 1)
     }
   }
-  return{pag,increment,decrement}
+  return { pag, increment, decrement }
 }
-
