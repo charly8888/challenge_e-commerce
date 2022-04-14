@@ -49,7 +49,7 @@ export const Header = () => {
           onClick={() => setOptions(!options)}
         ></button>
         {options && (
-          <div className="container_buttons">
+          <div className="container_buttons_header">
             <button onClick={() => handlerAddPoints(1000)}>1000</button>
             <button onClick={() => handlerAddPoints(5000)}>5000</button>
             <button onClick={() => handlerAddPoints(7500)}>7500</button>
