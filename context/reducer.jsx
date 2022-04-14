@@ -12,6 +12,16 @@ export function reducer(state, action) {
       return { ...state, name: action.payload }
     case 'products':
       return { ...state, products: action.payload }
+    case 'sort products lowest to highest':
+      return {
+        ...state,
+        products: state.products.sort((a, b) => a.cost - b.cost),
+      }
+    case 'sort products highest to lowest':
+      return {
+        ...state,
+        products: state.products.sort((b, a) => a.cost - b.cost),
+      }
     default:
       return state
   }

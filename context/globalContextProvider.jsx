@@ -34,8 +34,14 @@ const GlobalContextProvider = ({ children }) => {
   const setPoints = (points) => {
     dispatch({ type: 'points', payload: points })
   }
-  const setProducts = (products)=>{
+  const setProducts = (products) => {
     dispatch({ type: 'products', payload: products })
+  }
+  const sortLowest = () => {
+    dispatch({ type: 'sort products lowest to highest' })
+  }
+  const sortHighest = () => {
+    dispatch({ type: 'sort products highest to lowest' })
   }
   return (
     <globalContext.Provider
@@ -47,6 +53,8 @@ const GlobalContextProvider = ({ children }) => {
         setUser,
         setPoints,
         setProducts,
+        sortLowest,
+        sortHighest,
       }}
     >
       {children}
