@@ -21,11 +21,10 @@ export const requestPoints = async (opcion) => {
 }
 
 export const requestBuyProduct = async (opcion) => {
-  
-    const response = await fetch(
-      'https://coding-challenge-api.aerolab.co/redeem?productId=5a0b36c3734d1d08bf70857f',
-      optionsPost(opcion)
-    )
-    return response
- 
+  const response = await fetch(
+    'https://coding-challenge-api.aerolab.co/redeem?productId=5a0b36c3734d1d08bf70857f',
+    optionsPost(opcion)
+  )
+  console.log('esto es una prueba')
+  return response
 }
