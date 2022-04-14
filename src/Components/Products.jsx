@@ -6,7 +6,7 @@ import { requestBuyProduct } from '../helpers/apis/posts'
 import { globalContext } from '../../context/globalContextProvider'
 
 export const Products = () => {
-  const { setProducts, products } = useContext(globalContext)
+  const { setProducts, products, less } = useContext(globalContext)
 
   useEffect(async () => {
     setProducts(
@@ -15,6 +15,17 @@ export const Products = () => {
       )
     )
   }, [])
+
+  const handeleBuy = async (id, cost) => {
+    const res = await requestBuyProduct({
+      productId: id,
+    })
+    if (res.statusText === 'OK') {
+      less(cost)
+    } else {
+      console.error('no se pudo complrar, faltan puntos')
+    }
+  }
 
   return (
     <div className="container_products">
@@ -45,11 +56,7 @@ export const Products = () => {
               </div>
 
               <button
-                onClick={() =>
-                  requestBuyProduct({
-                    productId: _id,
-                  })
-                }
+                onClick={() => handeleBuy(_id, cost)}
                 className="redeem_now"
               >
                 Redeem now

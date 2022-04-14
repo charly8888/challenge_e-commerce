@@ -22,6 +22,11 @@ export function reducer(state, action) {
         ...state,
         products: state.products.sort((b, a) => a.cost - b.cost),
       }
+    case 'buy':
+      return {
+        ...state,
+        totalPoints: state.totalPoints - action.payload,
+      }
     default:
       return state
   }

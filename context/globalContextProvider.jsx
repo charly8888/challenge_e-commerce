@@ -43,6 +43,9 @@ const GlobalContextProvider = ({ children }) => {
   const sortHighest = () => {
     dispatch({ type: 'sort products highest to lowest' })
   }
+  const less = (count) => {
+    dispatch({ type: 'buy', payload: count})
+  }
   return (
     <globalContext.Provider
       value={{
@@ -54,6 +57,7 @@ const GlobalContextProvider = ({ children }) => {
         setPoints,
         setProducts,
         sortLowest,
+        less,
         sortHighest,
       }}
     >
