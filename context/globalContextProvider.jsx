@@ -1,4 +1,5 @@
 import React, { useReducer, createContext } from 'react'
+import { resultGetProducts } from '../src/helpers/apis/gets'
 import { requestPoints } from '../src/helpers/apis/posts'
 import { reducer } from './reducer'
 
@@ -7,6 +8,7 @@ export const globalContext = createContext()
 const INITIAL_STATE = {
   totalPoints: 0,
   name: '',
+  products: [],
 }
 
 const handlerAddPoints = (amount) => requestPoints({ amount })
@@ -32,7 +34,9 @@ const GlobalContextProvider = ({ children }) => {
   const setPoints = (points) => {
     dispatch({ type: 'points', payload: points })
   }
-
+  const setProducts = (products)=>{
+    dispatch({ type: 'products', payload: products })
+  }
   return (
     <globalContext.Provider
       value={{
@@ -42,6 +46,7 @@ const GlobalContextProvider = ({ children }) => {
         setAdd7500,
         setUser,
         setPoints,
+        setProducts,
       }}
     >
       {children}

@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 export function reducer(state, action) {
   switch (action.type) {
     case 'small':
@@ -11,6 +10,8 @@ export function reducer(state, action) {
       return { ...state, totalPoints: action.payload }
     case 'user':
       return { ...state, name: action.payload }
+    case 'products':
+      return { ...state, products: action.payload }
     default:
       return state
   }

@@ -1,11 +1,12 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { resultGetProducts } from '../helpers/apis/gets'
 import '../../styles/4.products.css'
 import { requestBuyProduct } from '../helpers/apis/posts'
+import { globalContext } from '../../context/globalContextProvider'
 
 export const Products = () => {
-  const [products, setProducts] = useState([])
+  const { setProducts, products } = useContext(globalContext)
 
   useEffect(async () => {
     setProducts(
