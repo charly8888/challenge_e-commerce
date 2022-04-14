@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import { requestPoints } from '../helpers/apis/posts'
 import { resultGetUsers } from '../helpers/apis/gets'
 import '../../styles/1.header.css'
+import { useContext } from 'react'
+import { globalContext } from '../../context/globalContextProvider'
 
 export const Header = () => {
   const [options, setOptions] = useState(false)
-  const [name, setName] = useState('')
-  const [totalPoints, setTotalPoints] = useState(0)
+
+  console.log(useContext(globalContext))
+  const {
+    totalPoints,
+    name,
+    setAdd1000,
+    setAdd5000,
+    setAdd7500,
+    setUser,
+    setPoints,
+  } = useContext(globalContext)
 
   useEffect(async () => {
     const { name, points } = await resultGetUsers(
       'https://coding-challenge-api.aerolab.co/user/me'
     )
-    setTotalPoints(points)
-    setName(name)
+    setUser(name)
+    setPoints(points)
   }, [])
-
-  const handlerAddPoints = async (amount) => {
-    let response = await requestPoints({ amount })
-    const data = await response.json()
-    const newPoints = data['New Points']
-    setTotalPoints(newPoints)
-  }
 
   return (
     <header>
@@ -50,9 +53,9 @@ export const Header = () => {
         ></button>
         {options && (
           <div className="container_buttons_header">
-            <button onClick={() => handlerAddPoints(1000)}>1000</button>
-            <button onClick={() => handlerAddPoints(5000)}>5000</button>
-            <button onClick={() => handlerAddPoints(7500)}>7500</button>
+            <button onClick={setAdd1000}>1000</button>
+            <button onClick={setAdd5000}>5000</button>
+            <button onClick={setAdd7500}>7500</button>
           </div>
         )}
       </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import GlobalContextProvider from '../context/globalContextProvider'
 import {
   Footer,
   Header,
@@ -9,13 +10,13 @@ import {
 
 const App = () => {
   return (
-    <>
+    <GlobalContextProvider>
       <Header />
       <PictureSection />
       <Selectors />
       <Products />
       <Footer />
-    </>
+    </GlobalContextProvider>
   )
 }
 
