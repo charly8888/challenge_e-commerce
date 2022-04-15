@@ -50,7 +50,8 @@ header{
     position: absolute;
     bottom:-4rem;
     right: 0;
-    width: 283px;
+    width: 20rem;
+    text-align: end;
 }
 .container_buttons_header button{
     cursor: pointer;
