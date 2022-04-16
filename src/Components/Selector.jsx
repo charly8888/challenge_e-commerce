@@ -4,11 +4,22 @@ import { globalContext } from '../../context/globalContextProvider'
 import '../../styles/3.selectors.css'
 
 export const Selectors = () => {
-  const { sortHighest, sortLowest } = useContext(globalContext)
+  const {
+    sortHighest,
+    sortLowest,
+    products,
+    currentPageNext,
+    currentPagePrevious,
+    currentPage,
+  } = useContext(globalContext)
+
   return (
     <>
       <div className="container_selectors">
-        <p className="amount_of_products">12 of 32 products</p>
+        <p className="amount_of_products">
+          {products.slice(0, currentPage + 1).flat().length} of{' '}
+          {products.flat().length} products
+        </p>
         <div className="vertical_separator"></div>
         <p className="sort_text">Sort by:</p>
         <button className="button_sort">Most recent</button>
@@ -18,8 +29,18 @@ export const Selectors = () => {
         <button onClick={sortHighest} className="button_sort">
           Highest price
         </button>
-        <button className="before"></button>
-        <button className="next"></button>
+        <button
+          className="before"
+          onClick={() => {
+            currentPagePrevious()
+          }}
+        ></button>
+        <button
+          className="next"
+          onClick={() => {
+            currentPageNext()
+          }}
+        ></button>
       </div>
     </>
   )

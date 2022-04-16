@@ -34,6 +34,7 @@ header{
 }
 .logo{
     margin:  0 0 0 2.63rem;
+    cursor: pointer;
 }
 .add_points{
     width:3rem;

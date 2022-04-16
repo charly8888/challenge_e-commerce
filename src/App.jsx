@@ -1,22 +1,22 @@
 import React from 'react'
-import GlobalContextProvider from '../context/globalContextProvider'
-import {
-  Footer,
-  Header,
-  PictureSection,
-  Products,
-  Selectors,
-} from './Components'
+import { Route, Routes } from 'react-router-dom'
+import { History } from './pages/History'
+import { Homepage } from './pages/Homepage'
+import { Product } from './pages/Product'
+import { ShoppingCart } from './pages/ShoppingCart'
 
 const App = () => {
   return (
-    <GlobalContextProvider>
-      <Header />
-      <PictureSection />
-      <Selectors />
-      <Products />
-      <Footer />
-    </GlobalContextProvider>
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="history" element={<History />} />
+      <Route path="cart" element={<ShoppingCart />} />
+      <Route path="product/:invoiceId" element={<Product />} />
+      <Route
+        path="*"
+        element={<h1> no se encuentra la ruta especificada</h1>}
+      />
+    </Routes>
   )
 }
 

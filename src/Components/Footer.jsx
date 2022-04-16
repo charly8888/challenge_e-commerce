@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { globalContext } from '../../context/globalContextProvider'
 import '../../styles/5.footer.css'
 
 export const Footer = () => {
+  const { products, currentPage, currentPagePrevious, currentPageNext } =
+    useContext(globalContext)
   return (
     <footer>
       <p className="amount_of_products">
-        15 of 36
+        {' '}
+        {products.slice(0, currentPage + 1).flat().length} of{' '}
+        {products.flat().length} products
       </p>
-      <button className="before" ></button>
-      <button className="next next_footer" ></button>
+
+      <button
+        className="before"
+        onClick={() => {
+          currentPagePrevious()
+        }}
+      ></button>
+      <button
+        className="next next_footer"
+        onClick={() => {
+          currentPageNext()
+        }}
+      ></button>
     </footer>
   )
 }

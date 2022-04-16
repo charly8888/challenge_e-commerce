@@ -3,14 +3,17 @@ import { resultGetUsers } from '../helpers/apis/gets'
 import '../../styles/1.header.css'
 import { useContext } from 'react'
 import { globalContext } from '../../context/globalContextProvider'
+import { Link, useNavigate } from 'react-router-dom'
 
-export const Header = () => {
+export const Header = ({ home = true }) => {
+  const navigate = useNavigate()
   const [options, setOptions] = useState(false)
 
   console.log(useContext(globalContext))
   const {
     totalPoints,
     name,
+    cart,
     setAdd1000,
     setAdd5000,
     setAdd7500,
@@ -28,13 +31,18 @@ export const Header = () => {
 
   return (
     <header>
+      <h2>{cart.length}</h2>
       <img
+        onClick={() => {
+          navigate('/')
+        }}
         src="/aerolab-logo.svg"
         alt="page logo"
         width="39px"
         height="36px"
         className="logo"
-      ></img>
+      />
+      {home && <Link to={'/history'}>History</Link>}
       <div className="container_user_and_coins">
         <p className="user">{name}</p>
         <div className="container_coins">
