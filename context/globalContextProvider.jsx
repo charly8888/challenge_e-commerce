@@ -1,5 +1,4 @@
 import React, { useReducer, createContext } from 'react'
-import { resultGetProducts } from '../src/helpers/apis/gets'
 import { requestPoints } from '../src/helpers/apis/posts'
 import { reducer } from './reducer'
 
