@@ -69,3 +69,35 @@ header{
 .container_buttons_header button:hover{
     transform: scale(1.1);
 }
+
+.history{
+    text-decoration: none;
+    margin: 0 0 0 1rem  ;
+    color: #616161;
+    background-color: #ededed;
+    padding: .5rem 1rem;
+
+    border-radius: 1.3rem;
+    font-size: 1.5rem;
+}
+.cart{
+    position: relative;
+    width: 2.625rem;
+    height: 2.625rem;
+    margin: 0 0 0 1rem;
+    background-image: url("/public/icons/buy-blue.svg");
+    background-size: 100%;
+    background-position: center;
+
+}
+.cart h6{
+    position: absolute;
+    margin: 0;
+    color: #fff;
+    background-color: rgb(177, 94, 205);
+    text-decoration: none;
+    left: 2rem;
+    top:-0.4rem;
+    padding: 0 .2rem;
+    border-radius: .5rem;
+}

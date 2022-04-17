@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Footer } from '../Components/Footer'
+import { Selectors } from '../Components/Selector'
 import { resultGetHistory } from '../helpers/apis/gets'
 import { Header } from '/src/Components'
 
@@ -13,9 +15,11 @@ export const History = () => {
     setHistory(arr)
     console.log(history.length)
   }, [])
+
   return (
     <>
       <Header home={false} />
+      <Selectors />
       {history.map((product, i) => {
         return (
           <article key={i}>
@@ -28,6 +32,7 @@ export const History = () => {
       <h2>
         {history.map((product) => product.cost).reduce((a, b) => a + b, 0)}
       </h2>
+      <Footer />
     </>
   )
 }

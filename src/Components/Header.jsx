@@ -31,7 +31,6 @@ export const Header = ({ home = true }) => {
 
   return (
     <header>
-      <h2>{cart.length}</h2>
       <img
         onClick={() => {
           navigate('/')
@@ -42,7 +41,14 @@ export const Header = ({ home = true }) => {
         height="36px"
         className="logo"
       />
-      {home && <Link to={'/history'}>History</Link>}
+      {home && (
+        <Link to={'/history'} className="history">
+          History
+        </Link>
+      )}
+      <Link className="cart" to={'/cart'}>
+        <h6>{cart.length}</h6>
+      </Link>
       <div className="container_user_and_coins">
         <p className="user">{name}</p>
         <div className="container_coins">
