@@ -6,7 +6,8 @@ import { globalContext } from '../../context/globalContextProvider'
 import { useNavigate } from 'react-router-dom'
 
 export const Products = () => {
-  const { setProducts, less, products, currentPage } = useContext(globalContext)
+  const { setProducts, less, products, currentPage, addToCart } =
+    useContext(globalContext)
 
   useEffect(async () => {
     setProducts(
@@ -16,6 +17,10 @@ export const Products = () => {
     )
   }, [])
 
+  const handleAddToCart = (id, e) => {
+    e.stopPropagation()
+    addToCart(id)
+  }
   const handeleBuy = async (id, cost, e) => {
     e.stopPropagation()
     const res = await requestBuyProduct({
@@ -48,7 +53,10 @@ export const Products = () => {
                 <p className="category">{category}</p>
                 <p className="title">{name}</p>
                 <div className="hover" onClick={() => handleClickHover(_id)}>
-                  <button className="bag white"></button>
+                  <button
+                    className="bag white"
+                    onClick={(e) => handleAddToCart(_id, e)}
+                  ></button>
 
                   <div className="container_of_conteiner">
                     <div className="container_price">

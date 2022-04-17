@@ -13,7 +13,7 @@
     background:#fff;
     box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
     position: relative;
-    transition:all .2s ease-in-out;
+    /* transition:all .2s ease-in-out; */
     overflow: hidden;
 }
 .card:hover{
@@ -115,5 +115,5 @@
     margin: 0;
 }
 .coin_product{
-    margin: 3px 0 0 5px;
+    margin: 5px 0 0 5px;
 }

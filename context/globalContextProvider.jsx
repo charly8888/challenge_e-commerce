@@ -53,6 +53,10 @@ const GlobalContextProvider = ({ children }) => {
   const currentPagePrevious = (page) => {
     dispatch({ type: 'page - previous', payload: page })
   }
+  const addToCart = (id) => {
+    dispatch({ type: 'add to cart', payload: id })
+  }
+
   return (
     <globalContext.Provider
       value={{
@@ -68,6 +72,7 @@ const GlobalContextProvider = ({ children }) => {
         sortHighest,
         currentPageNext,
         currentPagePrevious,
+        addToCart,
       }}
     >
       {children}

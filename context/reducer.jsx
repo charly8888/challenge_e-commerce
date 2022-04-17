@@ -1,4 +1,5 @@
 import usePagination from '/src/hooks/usePagination'
+
 export function reducer(state, action) {
   switch (action.type) {
     case 'small':
@@ -51,7 +52,11 @@ export function reducer(state, action) {
       } else {
         return { ...state }
       }
-
+    case 'add to cart':
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      }
     default:
       return state
   }
