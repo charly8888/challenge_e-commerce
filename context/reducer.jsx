@@ -33,23 +33,25 @@ export function reducer(state, action) {
         totalPoints: state.totalPoints - action.payload,
       }
     case 'page - next':
-      if (state.currentPage < state.products.length - 1) {
+      if (action.payload < state.products.length - 1) {
         return {
           ...state,
           currentPage: state.currentPage++,
         }
       } else {
-        return state
+        return { ...state }
       }
+
     case 'page - previous':
-      if (state.currentPage > 0) {
+      if (action.payload > 0) {
         return {
           ...state,
           currentPage: state.currentPage--,
         }
       } else {
-        return state
+        return { ...state }
       }
+
     default:
       return state
   }
