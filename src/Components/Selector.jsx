@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { globalContext } from '../../context/globalContextProvider'
 
 import '../../styles/3.selectors.css'
+import { PAGINATION } from '../helpers/pagination'
 
 export const Selectors = ({ context }) => {
   const {
@@ -23,10 +24,16 @@ export const Selectors = ({ context }) => {
         <div className="vertical_separator"></div>
         <p className="sort_text">Sort by:</p>
         <button className="button_sort">Most recent</button>
-        <button onClick={sortLowest} className="button_sort">
+        <button
+          onClick={() => sortLowest(PAGINATION.historyPagination)}
+          className="button_sort"
+        >
           Lowest price
         </button>
-        <button onClick={sortHighest} className="button_sort">
+        <button
+          onClick={() => sortHighest(PAGINATION.historyPagination)}
+          className="button_sort"
+        >
           Highest price
         </button>
         <button

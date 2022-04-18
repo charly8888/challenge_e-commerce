@@ -21,17 +21,20 @@ export function reducer(state, action) {
         ),
       }
     case 'sort products lowest to highest':
+      console.log(action.payload)
       return {
         ...state,
         products: usePagination(
-          state.products.flat().sort((a, b) => a.cost - b.cost)
+          state.products.flat().sort((a, b) => a.cost - b.cost),
+          action.payload
         ),
       }
     case 'sort products highest to lowest':
       return {
         ...state,
         products: usePagination(
-          state.products.flat().sort((b, a) => a.cost - b.cost)
+          state.products.flat().sort((b, a) => a.cost - b.cost),
+          action.payload
         ),
       }
     case 'buy':

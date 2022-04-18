@@ -11,15 +11,18 @@ const INITIAL_STATE = {
 const HistoryContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
-  const setProducts = (products, pagination) => {
+  const setProducts = (products, pagination ) => {
     dispatch({ type: 'products', payload: { products, pagination } })
   }
 
-  const sortLowest = () => {
-    dispatch({ type: 'sort products lowest to highest' })
+  const sortLowest = (pagination) => {
+    dispatch({ type: 'sort products lowest to highest', payload: pagination })
   }
-  const sortHighest = () => {
-    dispatch({ type: 'sort products highest to lowest' })
+  const sortHighest = (pagination) => {
+    dispatch({
+      type: 'sort products highest to lowest',
+      payload: pagination,
+    })
   }
   const currentPageNext = (page) => {
     dispatch({ type: 'page - next', payload: page })

@@ -4,6 +4,7 @@ import { historyContext } from '../../context/historyContextProvider'
 import { Footer } from '../Components/Footer'
 import { Selectors } from '../Components/Selector'
 import { resultGetHistory } from '../helpers/apis/gets'
+import { PAGINATION } from '../helpers/pagination'
 import { Header } from '/src/Components'
 
 export const History = () => {
@@ -14,7 +15,7 @@ export const History = () => {
       await resultGetHistory(
         'https://coding-challenge-api.aerolab.co/user/history'
       ),
-      50
+      PAGINATION.historyPagination
     )
   }, [])
 
