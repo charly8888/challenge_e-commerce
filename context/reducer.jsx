@@ -1,3 +1,4 @@
+import { compareAsc } from 'date-fns'
 import usePagination from '/src/hooks/usePagination'
 
 export function reducer(state, action) {
@@ -34,6 +35,18 @@ export function reducer(state, action) {
         ...state,
         products: usePagination(
           state.products.flat().sort((b, a) => a.cost - b.cost),
+          action.payload
+        ),
+      }
+    case 'sort - most recent':
+      return {
+        ...state,
+        products: usePagination(
+          state.products.flat().sort(function (a, b) {
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return new Date(b.createDate) - new Date(a.createDate)
+          }),
           action.payload
         ),
       }

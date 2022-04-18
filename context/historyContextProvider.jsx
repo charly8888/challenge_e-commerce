@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 const HistoryContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
-  const setProducts = (products, pagination ) => {
+  const setProducts = (products, pagination) => {
     dispatch({ type: 'products', payload: { products, pagination } })
   }
 
@@ -30,6 +30,10 @@ const HistoryContextProvider = ({ children }) => {
   const currentPagePrevious = (page) => {
     dispatch({ type: 'page - previous', payload: page })
   }
+  const mostRecent = (page) => {
+    dispatch({ type: 'sort - most recent', payload: page })
+  }
+
   return (
     <historyContext.Provider
       value={{
@@ -39,6 +43,7 @@ const HistoryContextProvider = ({ children }) => {
         sortHighest,
         currentPageNext,
         currentPagePrevious,
+        mostRecent,
       }}
     >
       {children}

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { globalContext } from '../../context/globalContextProvider'
+import { historyContext } from '../../context/historyContextProvider'
 
 import '../../styles/3.selectors.css'
 import { PAGINATION } from '../helpers/pagination'
@@ -12,6 +13,7 @@ export const Selectors = ({ context }) => {
     currentPageNext,
     currentPagePrevious,
     currentPage,
+    mostRecent,
   } = useContext(context)
 
   return (
@@ -23,7 +25,14 @@ export const Selectors = ({ context }) => {
         </p>
         <div className="vertical_separator"></div>
         <p className="sort_text">Sort by:</p>
-        <button className="button_sort">Most recent</button>
+        {context == historyContext && (
+          <button
+            className="button_sort"
+            onClick={() => mostRecent(PAGINATION.historyPagination)}
+          >
+            Most recent
+          </button>
+        )}
         <button
           onClick={() => sortLowest(PAGINATION.historyPagination)}
           className="button_sort"
