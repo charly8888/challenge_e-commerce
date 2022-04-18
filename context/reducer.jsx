@@ -13,7 +13,13 @@ export function reducer(state, action) {
     case 'user':
       return { ...state, name: action.payload }
     case 'products':
-      return { ...state, products: usePagination(action.payload) }
+      return {
+        ...state,
+        products: usePagination(
+          action.payload.products,
+          action.payload.pagination
+        ),
+      }
     case 'sort products lowest to highest':
       return {
         ...state,
@@ -57,6 +63,25 @@ export function reducer(state, action) {
         ...state,
         cart: [...state.cart, action.payload],
       }
+    case 'page - next - history':
+      if (state.currentPageHistory < state.historyProducts.length - 1) {
+        return {
+          ...state,
+          currentPageHistory: state.currentPageHistory++,
+        }
+      } else {
+        return { ...state }
+      }
+    case 'page - previous - history':
+      if (state.currentPageHistory > 0) {
+        return {
+          ...state,
+          currentPageHistory: state.currentPageHistory--,
+        }
+      } else {
+        return { ...state }
+      }
+
     default:
       return state
   }

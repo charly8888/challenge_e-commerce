@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { globalContext } from '../../context/globalContextProvider'
 import '../../styles/5.footer.css'
 
-export const Footer = () => {
+export const Footer = ({ context }) => {
   const { products, currentPage, currentPagePrevious, currentPageNext } =
-    useContext(globalContext)
+    useContext(context)
   return (
     <footer>
       <p className="amount_of_products">
@@ -16,13 +16,13 @@ export const Footer = () => {
       <button
         className="before"
         onClick={() => {
-          currentPagePrevious()
+          currentPagePrevious(currentPage)
         }}
       ></button>
       <button
         className="next next_footer"
         onClick={() => {
-          currentPageNext()
+          currentPageNext(currentPage)
         }}
       ></button>
     </footer>

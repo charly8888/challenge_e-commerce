@@ -35,8 +35,8 @@ const GlobalContextProvider = ({ children }) => {
   const setPoints = (points) => {
     dispatch({ type: 'points', payload: points })
   }
-  const setProducts = (products) => {
-    dispatch({ type: 'products', payload: products })
+  const setProducts = (products, pagination) => {
+    dispatch({ type: 'products', payload: {products, pagination} })
   }
   const sortLowest = () => {
     dispatch({ type: 'sort products lowest to highest' })
@@ -56,7 +56,7 @@ const GlobalContextProvider = ({ children }) => {
   const addToCart = (id) => {
     dispatch({ type: 'add to cart', payload: id })
   }
-
+  
   return (
     <globalContext.Provider
       value={{

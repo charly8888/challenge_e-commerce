@@ -3,7 +3,7 @@ import { globalContext } from '../../context/globalContextProvider'
 
 import '../../styles/3.selectors.css'
 
-export const Selectors = () => {
+export const Selectors = ({ context }) => {
   const {
     sortHighest,
     sortLowest,
@@ -11,7 +11,7 @@ export const Selectors = () => {
     currentPageNext,
     currentPagePrevious,
     currentPage,
-  } = useContext(globalContext)
+  } = useContext(context)
 
   return (
     <>

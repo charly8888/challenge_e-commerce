@@ -1,38 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { globalContext } from '../../context/globalContextProvider'
+import { historyContext } from '../../context/historyContextProvider'
 import { Footer } from '../Components/Footer'
 import { Selectors } from '../Components/Selector'
 import { resultGetHistory } from '../helpers/apis/gets'
 import { Header } from '/src/Components'
 
 export const History = () => {
-  const [history, setHistory] = useState([])
+  const { products, currentPage, setProducts } = useContext(historyContext)
 
   useEffect(async () => {
-    const arr = await resultGetHistory(
-      'https://coding-challenge-api.aerolab.co/user/history'
+    setProducts(
+      await resultGetHistory(
+        'https://coding-challenge-api.aerolab.co/user/history'
+      ),
+      50
     )
-    arr.reverse()
-    setHistory(arr)
-    console.log(history.length)
   }, [])
 
   return (
     <>
       <Header home={false} />
-      <Selectors />
-      {history.map((product, i) => {
-        return (
-          <article key={i}>
-            <img src={product.img.url} alt={product.name} />
-            <p>{product.cost}</p>
-          </article>
-        )
-      })}
+      <Selectors context={historyContext} />
+      {products.length >= 1 &&
+        products[currentPage].map((product, i) => {
+          return (
+            <article key={i}>
+              <img src={product.img.url} alt={product.name} />
+              <p>{product.cost}</p>
+            </article>
+          )
+        })}
 
       <h2>
-        {history.map((product) => product.cost).reduce((a, b) => a + b, 0)}
+        {products
+          .flat()
+          .map((product) => product.cost)
+          .reduce((a, b) => a + b, 0)}
       </h2>
-      <Footer />
+      <Footer context={historyContext} />
     </>
   )
 }

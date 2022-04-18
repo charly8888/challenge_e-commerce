@@ -1,4 +1,6 @@
 import React from 'react'
+import { globalContext } from '../../context/globalContextProvider'
+import { historyContext } from '../../context/historyContextProvider'
 import {
   Footer,
   Header,
@@ -12,9 +14,9 @@ export const Homepage = () => {
     <>
       <Header />
       <PictureSection />
-      <Selectors />
+      <Selectors context={globalContext} />
       <Products />
-      <Footer />
+      <Footer context={globalContext} />
     </>
   )
 }
