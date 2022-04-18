@@ -3,8 +3,7 @@ export const optionsGet = {
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBmMWM2MGQyZTllMjAwMWEzOTlhNDEiLCJpYXQiOjE2NDUxNTc0NzJ9.LO_tT7dk3Gqk78RWrioLACJSqduq-fdYRQfaibBDmmA',
+    Authorization: import.meta.env.VITE_API_KEY,
   },
 }
 

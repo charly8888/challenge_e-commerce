@@ -29,6 +29,7 @@ export const History = () => {
             <article key={i}>
               <img src={product.img.url} alt={product.name} />
               <p>{product.cost}</p>
+              <p>{product.createDate}</p>
             </article>
           )
         })}
