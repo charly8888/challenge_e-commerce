@@ -117,3 +117,25 @@
 .coin_product{
     margin: 5px 0 0 5px;
 }
+.product_History{
+    display: flex;
+    /* border: 1px solid red; */
+    border-radius: 1rem;
+    max-width: 73.5rem;
+    margin: 1rem auto;
+    /* padding: 1rem; */
+    background-color: #ededed;
+}
+.product_History img{
+    margin: 1rem;
+}
+.total{
+    margin: auto  ;
+    max-width: 73.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.total h2 img {
+    transform: translateY(.45rem);
+}

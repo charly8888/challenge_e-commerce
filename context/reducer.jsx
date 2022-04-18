@@ -74,11 +74,6 @@ export function reducer(state, action) {
       } else {
         return { ...state }
       }
-    case 'add to cart':
-      return {
-        ...state,
-        cart: [...state.cart, action.payload],
-      }
     case 'page - next - history':
       if (state.currentPageHistory < state.historyProducts.length - 1) {
         return {
@@ -96,6 +91,12 @@ export function reducer(state, action) {
         }
       } else {
         return { ...state }
+      }
+    case 'add to cart':
+      console.log(JSON.parse(localStorage.getItem('productsCart')))
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem('productsCart')),
       }
 
     default:

@@ -8,8 +8,8 @@ const INITIAL_STATE = {
   totalPoints: 0,
   name: '',
   products: [],
-  cart: [],
   currentPage: 0,
+  cart: []
 }
 
 const handlerAddPoints = (amount) => requestPoints({ amount })
@@ -53,8 +53,8 @@ const GlobalContextProvider = ({ children }) => {
   const currentPagePrevious = (page) => {
     dispatch({ type: 'page - previous', payload: page })
   }
-  const addToCart = (id) => {
-    dispatch({ type: 'add to cart', payload: id })
+  const addToCart = ()=>{
+    dispatch({ type: 'add to cart'})
   }
   
   return (
@@ -72,7 +72,7 @@ const GlobalContextProvider = ({ children }) => {
         sortHighest,
         currentPageNext,
         currentPagePrevious,
-        addToCart,
+        addToCart
       }}
     >
       {children}

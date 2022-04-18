@@ -6,6 +6,7 @@ import { globalContext } from '../../context/globalContextProvider'
 import { useNavigate } from 'react-router-dom'
 
 export const Products = () => {
+  const miStorage = window.localStorage
   const { setProducts, less, products, currentPage, addToCart } =
     useContext(globalContext)
 
@@ -19,8 +20,13 @@ export const Products = () => {
 
   const handleAddToCart = (id, e) => {
     e.stopPropagation()
-    addToCart(id)
+    const Storage = JSON.parse(localStorage.getItem('productsCart')) || []
+    Storage.push(id)
+    // console.log(Storage)
+    miStorage.setItem('productsCart', JSON.stringify(Storage))
+    addToCart()
   }
+
   const handeleBuy = async (id, cost, e) => {
     e.stopPropagation()
     const res = await requestBuyProduct({

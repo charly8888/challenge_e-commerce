@@ -26,20 +26,27 @@ export const History = () => {
       {products.length >= 1 &&
         products[currentPage].map((product, i) => {
           return (
-            <article key={i}>
+            <article key={i} className="product_History">
               <img src={product.img.url} alt={product.name} />
-              <p>{product.cost}</p>
-              <p>{product.createDate}</p>
+              <section className="info">
+                <p>Cost : {product.cost}</p>
+                <p>Date : {product.createDate}</p>
+                <p>Name : {product.name}</p>
+                <p>Category : {product.category}</p>
+              </section>
             </article>
           )
         })}
-
-      <h2>
-        {products
-          .flat()
-          .map((product) => product.cost)
-          .reduce((a, b) => a + b, 0)}
-      </h2>
+      <article className="total">
+        <h2>TOTAL :</h2>
+        <h2>
+          <img src="/icons/coin.svg" />
+          {products
+            .flat()
+            .map((product) => product.cost)
+            .reduce((a, b) => a + b, 0)}
+        </h2>
+      </article>
       <Footer context={historyContext} />
     </>
   )
