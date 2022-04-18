@@ -1,10 +1,13 @@
 .container_products{
-    width: 73.5rem;
+    max-width: 73.5rem;
     min-height:12vh;
     margin: 0 auto;
-    display:  grid;
-     grid-template-columns: 1fr 1fr 1fr 1fr;
-     gap: 1.5rem;
+    /* display:  grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr; */
+    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card{

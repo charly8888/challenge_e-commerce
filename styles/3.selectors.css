@@ -1,6 +1,6 @@
 .container_selectors{
     position:relative;
-    width: 73.5rem;
+    max-width: 73.5rem;
     height:auto;
     margin: 0 auto;
     display:flex;

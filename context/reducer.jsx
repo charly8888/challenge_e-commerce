@@ -96,7 +96,7 @@ export function reducer(state, action) {
       console.log(JSON.parse(localStorage.getItem('productsCart')))
       return {
         ...state,
-        cart: JSON.parse(localStorage.getItem('productsCart')),
+        cart: JSON.parse(localStorage.getItem('productsCart')) || [],
       }
 
     default:
