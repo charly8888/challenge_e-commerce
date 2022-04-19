@@ -5,9 +5,9 @@ import { resultGetProducts } from '../helpers/apis/gets'
 import css from '/styles/cartPage.module.scss'
 
 export const ShoppingCart = () => {
-  const { cart, products, setProducts } = useContext(globalContext)
+  const { cart, products, setProducts, addToCart } = useContext(globalContext)
   const [arr, setArr] = useState([])
-
+  const miStorage = window.localStorage
   useEffect(async () => {
     await setProducts(
       await resultGetProducts(
@@ -36,6 +36,11 @@ export const ShoppingCart = () => {
     console.log(arr)
   }, [products, cart])
 
+  function handleDelete(id) {
+    const newStorage = cart.filter((e) => e !== id)
+    miStorage.setItem('productsCart', JSON.stringify(newStorage))
+    addToCart()
+  }
   return (
     <>
       <Header />
@@ -50,6 +55,9 @@ export const ShoppingCart = () => {
                 <section className={css.infoProduct}>
                   <h1>{product.name}</h1>
                   <h1>{product.cost}</h1>
+                  <button onClick={() => handleDelete(product._id)}>
+                    Delete
+                  </button>
                 </section>
               </article>
             )

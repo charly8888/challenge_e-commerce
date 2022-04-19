@@ -75,7 +75,7 @@ export function reducer(state, action) {
       }
 
     case 'add to cart':
-      console.log(JSON.parse(localStorage.getItem('productsCart')))
+      // console.log(JSON.parse(localStorage.getItem('productsCart')))
       return {
         ...state,
         cart: JSON.parse(localStorage.getItem('productsCart')) || [],
