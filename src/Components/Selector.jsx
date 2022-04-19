@@ -46,15 +46,15 @@ export const Selectors = ({ context }) => {
         </button>
         <button
           className="before"
-          onClick={() => {
-            currentPagePrevious()
-          }}
+          onClick={
+            currentPagePrevious
+          }
         ></button>
         <button
           className="next"
-          onClick={() => {
-            currentPageNext()
-          }}
+          onClick={
+            currentPageNext
+          }
         ></button>
       </div>
     </>

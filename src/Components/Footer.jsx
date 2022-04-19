@@ -12,18 +12,8 @@ export const Footer = ({ context }) => {
         {products.flat().length} products
       </p>
 
-      <button
-        className="before"
-        onClick={() => {
-          currentPagePrevious()
-        }}
-      ></button>
-      <button
-        className="next next_footer"
-        onClick={() => {
-          currentPageNext()
-        }}
-      ></button>
+      <button className="before" onClick={currentPagePrevious}></button>
+      <button className="next next_footer" onClick={currentPageNext}></button>
     </footer>
   )
 }

@@ -1,4 +1,3 @@
-import { compareAsc } from 'date-fns'
 import usePagination from '/src/hooks/usePagination'
 
 export function reducer(state, action) {
@@ -59,7 +58,7 @@ export function reducer(state, action) {
       if (state.currentPage < state.products.length - 1) {
         return {
           ...state,
-          currentPage: state.currentPage++,
+          currentPage: state.currentPage + 1,
         }
       } else {
         return { ...state }
@@ -69,12 +68,12 @@ export function reducer(state, action) {
       if (state.currentPage > 0) {
         return {
           ...state,
-          currentPage: state.currentPage--,
+          currentPage: state.currentPage - 1,
         }
       } else {
         return { ...state }
       }
-    
+
     case 'add to cart':
       console.log(JSON.parse(localStorage.getItem('productsCart')))
       return {
