@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Header } from '../Components/Header'
 import { globalContext } from '../../context/globalContextProvider'
 import { resultGetProducts } from '../helpers/apis/gets'
+import css from '/styles/cartPage.module.scss'
 
 export const ShoppingCart = () => {
   const { cart, products, setProducts } = useContext(globalContext)
@@ -41,15 +42,20 @@ export const ShoppingCart = () => {
       {arr == false ? (
         <h1>No tienes artículos </h1>
       ) : (
-        arr.map((product, i) => {
-          return (
-            <article key={i}>
-              <h1>{product._id}</h1>
-              <h1>{product.name}</h1>
-              <h1>{product.cost}</h1>
-            </article>
-          )
-        })
+        <main className={css.container}>
+          {arr.map((product, i) => {
+            return (
+              <article key={i} className={css.item}>
+                <img src={product.img.url} />
+                <section className={css.infoProduct}>
+                  <h1>{product.name}</h1>
+                  <h1>{product.cost}</h1>
+                </section>
+              </article>
+            )
+          })}
+          <footer></footer>
+        </main>
       )}
     </>
   )

@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom'
 
 export const Products = () => {
   const miStorage = window.localStorage
-  const { setProducts, less, products, currentPage, addToCart } =
+  const { setProducts, less, products, currentPage, addToCart, totalPoints } =
     useContext(globalContext)
+  console.log(totalPoints)
 
   useEffect(async () => {
     setProducts(
@@ -26,7 +27,9 @@ export const Products = () => {
     miStorage.setItem('productsCart', JSON.stringify(Storage))
     addToCart()
   }
-
+  const stopPropagation = (e) => {
+    e.stopPropagation()
+  }
   const handeleBuy = async (id, cost, e) => {
     e.stopPropagation()
     const res = await requestBuyProduct({
@@ -52,37 +55,51 @@ export const Products = () => {
             return (
               <div className="card" key={_id}>
                 <div className="container_item">
-                  <button className="bag"></button>
+                  {cost <= totalPoints && <button className="bag"></button>}
+                  {cost > totalPoints && (
+                    <div className="need_points">
+                      <p>You need {cost - totalPoints}</p>
+                      <img src="/icons/coin.svg" />
+                    </div>
+                  )}
                   <img className="img_product" src={url} width="100%"></img>
                 </div>
                 <div className="separator_card"></div>
                 <p className="category">{category}</p>
                 <p className="title">{name}</p>
-                <div className="hover" onClick={() => handleClickHover(_id)}>
+                <div
+                  className={cost <= totalPoints ? 'hover' : ''}
+                  onClick={() => handleClickHover(_id)}
+                >
                   <button
-                    className="bag white"
+                    className={cost <= totalPoints ? 'bag white' : ''}
                     onClick={(e) => handleAddToCart(_id, e)}
                   ></button>
 
                   <div className="container_of_conteiner">
                     <div className="container_price">
-                      <p className="price">{cost}</p>
-                      <img
-                        src="/icons/coin.svg"
-                        alt="coins"
-                        width="33px"
-                        height="33px"
-                        className="coin_product"
-                      ></img>
+                      {cost <= totalPoints && (
+                        <>
+                          <p className="price">{cost}</p>
+                          <img
+                            src="/icons/coin.svg"
+                            alt="coins"
+                            width="33px"
+                            height="33px"
+                            className="coin_product"
+                          />
+                        </>
+                      )}
                     </div>
                   </div>
-
-                  <button
-                    onClick={(e) => handeleBuy(_id, cost, e)}
-                    className="redeem_now"
-                  >
-                    Redeem now
-                  </button>
+                  {cost <= totalPoints && (
+                    <button
+                      onClick={(e) => handeleBuy(_id, cost, e)}
+                      className="redeem_now"
+                    >
+                      Redeem now
+                    </button>
+                  )}
                 </div>
               </div>
             )

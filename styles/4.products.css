@@ -142,3 +142,27 @@
 .total h2 img {
     transform: translateY(.45rem);
 }
+.need_points{
+    position: absolute;
+    width: auto;
+    display: flex;
+    align-items: center;
+    height:2.625rem;
+    background-color: #616161;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 0.875rem;
+    letter-spacing:-0.03px;
+    padding: 0 1rem;
+    text-align:right;
+    right: 0;
+    opacity:0.8;
+}
+.need_points img{
+    width: 1.4rem;
+    transform: translate(.2rem ,.12rem);
+    opacity: 1; 
+}
+.need_points p {
+    opacity: 1;
+}

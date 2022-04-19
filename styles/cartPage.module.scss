@@ -1,0 +1,16 @@
+.container{
+  background-color: #ededed;
+  max-width: 1440px;
+  margin: 3rem auto;
+  border-radius: 1rem;
+  & img{
+    max-width: 10rem;
+    border-radius: .8rem;
+    margin: 0 1.5rem;
+  }
+  & .item{
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    align-items: center;
+  }
+}
