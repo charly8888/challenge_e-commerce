@@ -8,7 +8,8 @@ import { PAGINATION } from '../helpers/pagination'
 import { Header } from '/src/Components'
 
 export const History = () => {
-  const { products, currentPage, setProducts } = useContext(historyContext)
+  const { products, currentPage, setProducts } =
+    useContext(historyContext)
 
   useEffect(async () => {
     setProducts(

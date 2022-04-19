@@ -47,11 +47,11 @@ const GlobalContextProvider = ({ children }) => {
   const less = (count) => {
     dispatch({ type: 'buy', payload: count })
   }
-  const currentPageNext = (page) => {
-    dispatch({ type: 'page - next', payload: page })
+  const currentPageNext = () => {
+    dispatch({ type: 'page - next' })
   }
-  const currentPagePrevious = (page) => {
-    dispatch({ type: 'page - previous', payload: page })
+  const currentPagePrevious = () => {
+    dispatch({ type: 'page - previous'  })
   }
   const addToCart = ()=>{
     dispatch({ type: 'add to cart'})

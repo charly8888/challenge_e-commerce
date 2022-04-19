@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { globalContext } from '../../context/globalContextProvider'
 import { historyContext } from '../../context/historyContextProvider'
 
 import '../../styles/3.selectors.css'
@@ -48,13 +47,13 @@ export const Selectors = ({ context }) => {
         <button
           className="before"
           onClick={() => {
-            currentPagePrevious(currentPage)
+            currentPagePrevious()
           }}
         ></button>
         <button
           className="next"
           onClick={() => {
-            currentPageNext(currentPage)
+            currentPageNext()
           }}
         ></button>
       </div>

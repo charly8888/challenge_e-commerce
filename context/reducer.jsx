@@ -56,7 +56,7 @@ export function reducer(state, action) {
         totalPoints: state.totalPoints - action.payload,
       }
     case 'page - next':
-      if (action.payload < state.products.length - 1) {
+      if (state.currentPage < state.products.length - 1) {
         return {
           ...state,
           currentPage: state.currentPage++,
@@ -66,7 +66,7 @@ export function reducer(state, action) {
       }
 
     case 'page - previous':
-      if (action.payload > 0) {
+      if (state.currentPage > 0) {
         return {
           ...state,
           currentPage: state.currentPage--,
@@ -74,24 +74,7 @@ export function reducer(state, action) {
       } else {
         return { ...state }
       }
-    case 'page - next - history':
-      if (state.currentPageHistory < state.historyProducts.length - 1) {
-        return {
-          ...state,
-          currentPageHistory: state.currentPageHistory++,
-        }
-      } else {
-        return { ...state }
-      }
-    case 'page - previous - history':
-      if (state.currentPageHistory > 0) {
-        return {
-          ...state,
-          currentPageHistory: state.currentPageHistory--,
-        }
-      } else {
-        return { ...state }
-      }
+    
     case 'add to cart':
       console.log(JSON.parse(localStorage.getItem('productsCart')))
       return {

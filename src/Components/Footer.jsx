@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { globalContext } from '../../context/globalContextProvider'
 import '../../styles/5.footer.css'
 
 export const Footer = ({ context }) => {
@@ -16,13 +15,13 @@ export const Footer = ({ context }) => {
       <button
         className="before"
         onClick={() => {
-          currentPagePrevious(currentPage)
+          currentPagePrevious()
         }}
       ></button>
       <button
         className="next next_footer"
         onClick={() => {
-          currentPageNext(currentPage)
+          currentPageNext()
         }}
       ></button>
     </footer>
