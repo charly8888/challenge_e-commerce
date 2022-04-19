@@ -3,11 +3,15 @@ import { Header } from '../Components/Header'
 import { globalContext } from '../../context/globalContextProvider'
 import { resultGetProducts } from '../helpers/apis/gets'
 import css from '/styles/cartPage.module.scss'
+import { getTotalFromProducts } from '../helpers/getTotalFromProducts'
+import { requestBuyProduct } from '../helpers/apis/posts'
 
 export const ShoppingCart = () => {
-  const { cart, products, setProducts, addToCart } = useContext(globalContext)
+  const { cart, products, setProducts, addToCart, totalPoints, less } =
+    useContext(globalContext)
   const [arr, setArr] = useState([])
   const miStorage = window.localStorage
+  const total = getTotalFromProducts(arr)
   useEffect(async () => {
     await setProducts(
       await resultGetProducts(
@@ -41,6 +45,25 @@ export const ShoppingCart = () => {
     miStorage.setItem('productsCart', JSON.stringify(newStorage))
     addToCart()
   }
+
+  const handeleBuy = (e, id, cost) => {
+    e.stopPropagation()
+    if (typeof id === 'object') {
+      id.forEach(async (id) => {
+        const res = await requestBuyProduct({
+          productId: id,
+        })
+        if (res.statusText === 'OK') {
+          console.log('todo bien, artículo comprado')
+        } else {
+          console.error('no se pudo comprar, faltan puntos')
+        }
+      })
+    }
+    less(cost)
+    miStorage.removeItem('productsCart')
+    addToCart()
+  }
   return (
     <>
       <Header />
@@ -62,7 +85,14 @@ export const ShoppingCart = () => {
               </article>
             )
           })}
-          <footer></footer>
+          <footer className="footer_shoppingCart">
+            <h2>Total : {total}</h2>
+            {total <= totalPoints ? (
+              <button onClick={(e) => handeleBuy(e, cart, total)}>Swap</button>
+            ) : (
+              <button>You need {total - totalPoints} points</button>
+            )}
+          </footer>
         </main>
       )}
     </>
