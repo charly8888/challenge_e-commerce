@@ -8,9 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
 export const Header = ({ home = true }) => {
   const navigate = useNavigate()
   const [options, setOptions] = useState(false)
-  // const [storage, setStorage] = useState([])
 
-  console.log(useContext(globalContext))
   const {
     totalPoints,
     name,
@@ -30,12 +28,7 @@ export const Header = ({ home = true }) => {
     setUser(name)
     setPoints(points)
     addToCart()
-    // setStorage(JSON.parse(localStorage.getItem('productsCart')))
-    // window.onstorage = (event) => {
-    // window.addEventListener('storage', (event) => {
-    //   if (event.key != 'productsCart') return
-    //   console.log(event)
-    // })
+    
   }, [])
 
   return (

@@ -95,7 +95,7 @@ export const ShoppingCart = () => {
               </div>
                 <section className={css.infoProduct}>
                   <h1>{product.name}</h1>
-                  <h1>{product.cost * product.cantidad}</h1>
+                  <h1>Cost: {product.cost * product.cantidad}</h1>
                   <button className={css.swap}  onClick={() => handleDelete(product._id)}>
                     Delete
                   </button>

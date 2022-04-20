@@ -7,17 +7,9 @@ import { useNavigate } from 'react-router-dom'
 
 export const Products = () => {
   const miStorage = window.localStorage
-  const { setProducts, less, products, currentPage, addToCart, totalPoints } =
+  const {  less, products, currentPage, addToCart, totalPoints } =
     useContext(globalContext)
   console.log(totalPoints)
-
-  useEffect(async () => {
-    setProducts(
-      await resultGetProducts(
-        'https://coding-challenge-api.aerolab.co/products'
-      )
-    )
-  }, [])
 
   const handleAddToCart = (id, e) => {
     e.stopPropagation()
@@ -27,9 +19,7 @@ export const Products = () => {
     miStorage.setItem('productsCart', JSON.stringify(Storage))
     addToCart()
   }
-  const stopPropagation = (e) => {
-    e.stopPropagation()
-  }
+  
   const handeleBuy = async (id, cost, e) => {
     e.stopPropagation()
     const res = await requestBuyProduct({
@@ -53,7 +43,7 @@ export const Products = () => {
         products[currentPage].map(
           ({ _id, category, cost, img: { url }, name }) => {
             return (
-              <div className="card" key={_id}>
+              <div className="card" key={_id} onClick={() => handleClickHover(_id)} >
                 <div className="container_item">
                   {cost <= totalPoints && <button className="bag"></button>}
                   {cost > totalPoints && (

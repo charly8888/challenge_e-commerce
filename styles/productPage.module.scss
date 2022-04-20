@@ -1,0 +1,33 @@
+.containerProduct{
+  max-width: 73.5rem;
+  height: auto;
+  background-color:#ededed ;
+  margin: 3rem auto;
+  border-radius: 1rem;
+}
+.imgProduct{
+  margin: 1rem;
+  border-radius: 1rem;
+  width: 31.5rem;
+}
+.product{
+  display: flex;
+}
+  .addToCart{
+    position: relative;
+    inset: 0;
+  }
+  .redeemNow{
+    position: relative;
+    inset: 0 ;
+    max-width: 10rem;
+    justify-content: center;
+    margin: 0 1.5rem;
+  }
+
+.buySection{
+  height: 6rem;
+  align-items: center;
+  justify-content: end;
+  display: flex;
+}
