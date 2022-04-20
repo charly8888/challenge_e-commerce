@@ -5,12 +5,16 @@ import { resultGetProducts } from '../helpers/apis/gets'
 import css from '/styles/cartPage.module.scss'
 import { getTotalFromProducts } from '../helpers/getTotalFromProducts'
 import { requestBuyProduct } from '../helpers/apis/posts'
+import { pasarDeArrayAObjeto } from '../helpers/pasarDeArrayAObjeto'
+import { pasarDeArrayDeObjASoloDeIDs } from '../helpers/pasarDeArrayDeObjASoloDeIDs'
 
 export const ShoppingCart = () => {
   const { cart, products, setProducts, addToCart, totalPoints, less } =
     useContext(globalContext)
   const [arr, setArr] = useState([])
+
   const miStorage = window.localStorage
+
   const total = getTotalFromProducts(arr)
   useEffect(async () => {
     await setProducts(
@@ -36,9 +40,9 @@ export const ShoppingCart = () => {
   useEffect(() => {
     console.log(cart)
     console.log(products)
-    setArr(buscar(cart, products.flat()))
-    console.log(arr)
+    setArr(pasarDeArrayAObjeto(buscar(cart, products.flat())))
   }, [products, cart])
+  console.log('arr', arr)
 
   function handleDelete(id) {
     const newStorage = cart.filter((e) => e !== id)
@@ -64,6 +68,18 @@ export const ShoppingCart = () => {
     miStorage.removeItem('productsCart')
     addToCart()
   }
+
+  function handleAdd(i) {
+    let newArr = [...arr]
+    newArr[i].cantidad = newArr[i].cantidad + 1
+    setArr(newArr)
+  }
+  function handleLess(i) {
+    let newArr = [...arr]
+    newArr[i].cantidad = newArr[i].cantidad - 1
+    setArr(newArr)
+  }
+
   return (
     <>
       <Header />
@@ -77,10 +93,15 @@ export const ShoppingCart = () => {
                 <img src={product.img.url} />
                 <section className={css.infoProduct}>
                   <h1>{product.name}</h1>
-                  <h1>{product.cost}</h1>
+                  <h1>{product.cost * product.cantidad}</h1>
                   <button onClick={() => handleDelete(product._id)}>
                     Delete
                   </button>
+                  <button onClick={() => handleAdd(i)}>+1</button>
+                  {product.cantidad}
+                  {product.cantidad > 1 && (
+                    <button onClick={() => handleLess(i)}> -1</button>
+                  )}
                 </section>
               </article>
             )
@@ -88,7 +109,13 @@ export const ShoppingCart = () => {
           <footer className="footer_shoppingCart">
             <h2>Total : {total}</h2>
             {total <= totalPoints ? (
-              <button onClick={(e) => handeleBuy(e, cart, total)}>Swap</button>
+              <button
+                onClick={(e) =>
+                  handeleBuy(e, pasarDeArrayDeObjASoloDeIDs(arr), total)
+                }
+              >
+                Swap
+              </button>
             ) : (
               <button>You need {total - totalPoints} points</button>
             )}
