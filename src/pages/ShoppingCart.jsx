@@ -84,23 +84,25 @@ export const ShoppingCart = () => {
     <>
       <Header />
       {arr == false ? (
-        <h1>No tienes artículos </h1>
+        <h1 className={css.noItems}>You don't have items</h1>
       ) : (
         <main className={css.container}>
           {arr.map((product, i) => {
             return (
               <article key={i} className={css.item}>
+              <div  className={css.img}>
                 <img src={product.img.url} />
+              </div>
                 <section className={css.infoProduct}>
                   <h1>{product.name}</h1>
                   <h1>{product.cost * product.cantidad}</h1>
-                  <button onClick={() => handleDelete(product._id)}>
+                  <button className={css.swap}  onClick={() => handleDelete(product._id)}>
                     Delete
                   </button>
-                  <button onClick={() => handleAdd(i)}>+1</button>
+                  <button onClick={() => handleAdd(i)} className={`${css.swap} ${css.buttonSmall}`}>+1</button>
                   {product.cantidad}
                   {product.cantidad > 1 && (
-                    <button onClick={() => handleLess(i)}> -1</button>
+                    <button onClick={() => handleLess(i)} className={`${css.swap} ${css.buttonSmall}`}> -1</button>
                   )}
                 </section>
               </article>
@@ -109,7 +111,7 @@ export const ShoppingCart = () => {
           <footer className="footer_shoppingCart">
             <h2>Total : {total}</h2>
             {total <= totalPoints ? (
-              <button
+              <button className={css.swap}
                 onClick={(e) =>
                   handeleBuy(e, pasarDeArrayDeObjASoloDeIDs(arr), total)
                 }
@@ -117,7 +119,7 @@ export const ShoppingCart = () => {
                 Swap
               </button>
             ) : (
-              <button>You need {total - totalPoints} points</button>
+              <button className={`${css.swap} ${css.needMore}`}>You need {total - totalPoints} points</button>
             )}
           </footer>
         </main>

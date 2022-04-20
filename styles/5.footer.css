@@ -11,5 +11,6 @@ footer{
     position: relative
 }
 .footer_shoppingCart{
-    
+    border: none;
+    justify-content: space-around;
 }
