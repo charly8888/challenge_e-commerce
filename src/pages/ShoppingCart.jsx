@@ -95,7 +95,7 @@ export const ShoppingCart = () => {
               </div>
                 <section className={css.infoProduct}>
                   <h1>{product.name}</h1>
-                  <h1>Cost: {product.cost * product.cantidad}</h1>
+                  <h1>Cost: <img  src='/icons/coin.svg' className={css.coinProduct}  alt='coin icon'/>{product.cost * product.cantidad}</h1>
                   <button className={css.swap}  onClick={() => handleDelete(product._id)}>
                     Delete
                   </button>
@@ -109,7 +109,7 @@ export const ShoppingCart = () => {
             )
           })}
           <footer className="footer_shoppingCart">
-            <h2>Total : {total}</h2>
+            <h2>Total : <img  src='/icons/coin.svg' className={css.coinTotal}  alt='coin icon'/> {total}</h2>
             {total <= totalPoints ? (
               <button className={css.swap}
                 onClick={(e) =>

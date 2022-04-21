@@ -28,7 +28,6 @@ export const Header = ({ home = true }) => {
     setUser(name)
     setPoints(points)
     addToCart()
-    
   }, [])
 
   return (
@@ -57,11 +56,11 @@ export const Header = ({ home = true }) => {
           <p className="number-of-coins">{totalPoints}</p>
           <img
             src="/icons/coin.svg"
-            alt="coins"
             width="24px"
             height="24px"
             className="coin"
-          ></img>
+            alt="coin icon"
+          />
         </div>
         <button
           className="add_points"

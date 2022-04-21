@@ -44,35 +44,42 @@ export const Product = () => {
       ) : (
         <main className={css.containerProduct}>
           <section className={css.product}>
-          <img src={product[0].img.hdUrl} alt={product[0].name} className={css.imgProduct}/>
-          <section className={css.containerDescription}>
-            <h1 className={css.heading}>{product[0].name}</h1>
-            <h1 className={css.cost}>{product[0].cost}</h1>
-            <h1 className={css.category}>{product[0].category}</h1>
-          </section>
-
-          </section>
-          <section className={css.buySection}> 
-
-          <button
-            className={` ${css.addToCart}  bag `}
-            onClick={(e) => handleAddToCart(product[0]._id, e)}
-          ></button>
-
-          {product[0].cost <= totalPoints && (
-            <button
-              onClick={(e) => handeleBuy(product[0]._id, product[0].cost, e)}
-              className={`${css.redeemNow} redeem_now`}
-            >
-              Redeem now
-            </button>
-          )}
-          {product[0].cost > totalPoints && (
-            <div className={`${css.redeemNow} need_points`}>
-              <p>You need {product[0].cost - totalPoints}</p>
-              <img src="/icons/coin.svg" />
+            <div className={css.imgProduct}>
+              <div className={css.separatorBottom}></div>
+              <div className={css.separatorRight}></div>
+              <img src={product[0].img.hdUrl} alt={product[0].name} />
             </div>
-          )}
+            <section className={css.containerDescription}>
+              <h1 className={css.heading}>{product[0].name}</h1>
+              <h1 className={css.cost}>
+                {' '}
+                <img src="/icons/coin.svg" alt="coin icon" />
+                {product[0].cost}
+              </h1>
+              <section className={css.buySection}>
+                <button
+                  className={` ${css.addToCart}  bag `}
+                  onClick={(e) => handleAddToCart(product[0]._id, e)}
+                ></button>
+
+                {product[0].cost <= totalPoints && (
+                  <button
+                    onClick={(e) =>
+                      handeleBuy(product[0]._id, product[0].cost, e)
+                    }
+                    className={`${css.redeemNow} ${css.redeemNowHover} redeem_now`}
+                  >
+                    Redeem now
+                  </button>
+                )}
+                {product[0].cost > totalPoints && (
+                  <div className={`${css.redeemNow}  need_points`}>
+                    <p>You need {product[0].cost - totalPoints}</p>
+                    <img src="/icons/coin.svg" />
+                  </div>
+                )}
+              </section>
+            </section>
           </section>
         </main>
       )}
