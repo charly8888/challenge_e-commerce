@@ -96,14 +96,14 @@ export const ShoppingCart = () => {
                 <section className={css.infoProduct}>
                   <h1>{product.name}</h1>
                   <h1>Cost: <img  src='/icons/coin.svg' className={css.coinProduct}  alt='coin icon'/>{product.cost * product.cantidad}</h1>
-                  <button className={css.swap}  onClick={() => handleDelete(product._id)}>
-                    Delete
-                  </button>
                   <button onClick={() => handleAdd(i)} className={`${css.swap} ${css.buttonSmall}`}>+1</button>
                   {product.cantidad}
                   {product.cantidad > 1 && (
                     <button onClick={() => handleLess(i)} className={`${css.swap} ${css.buttonSmall}`}> -1</button>
                   )}
+                  <button className={`${css.swap} ${css.delete}`}  onClick={() => handleDelete(product._id)}>
+                    Delete
+                  </button>
                 </section>
               </article>
             )
